@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Database
+*.db
+*.db-journal
+db/
+prisma/*.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Misc
+*.pem
+.vercel
+
+# Prisma (keep migrations in repo for production)
+# prisma/migrations/
+
+# Download folder (generated files)
+download/
+
+# Worklog
+worklog.md
+
+# Scripts (internal)
+scripts/
+
+# Examples
+examples/
+
+# Skills (internal)
+skills/
+
+# Temporary files
+*.tmp
+*.temp
