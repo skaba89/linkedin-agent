@@ -1,4 +1,4 @@
-# LinkedInBoost - Render Blueprint Configuration
+# LinkedInBoost - Render Configuration
 
 services:
   - type: web
@@ -7,15 +7,8 @@ services:
     plan: free
     region: frankfurt
     branch: main
-    buildCommand: npm install && npx prisma generate && npm run build
+    buildCommand: npm install && npm run build
     startCommand: node .next/standalone/server.js
-    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "20"
-      - key: NODE_ENV
-        value: production
-      - key: JWT_SECRET
-        generateValue: true
-      - key: NEXTAUTH_SECRET
-        generateValue: true
