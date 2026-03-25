@@ -1,10 +1,6 @@
 # LinkedInBoost - Render Blueprint Configuration
-# Ce fichier configure le déploiement automatique sur Render
 
 services:
-  # ============================================
-  # WEB SERVICE - Application Next.js
-  # ============================================
   - type: web
     name: linkedin-agent
     runtime: node
@@ -12,37 +8,14 @@ services:
     region: frankfurt
     branch: main
     buildCommand: npm install && npx prisma generate && npm run build
-    startCommand: npx prisma db push --accept-data-loss && node .next/standalone/server.js
+    startCommand: node .next/standalone/server.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "20"
       - key: NODE_ENV
         value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: linkedin-agent-db
-          property: connectionString
-      - key: DIRECT_DATABASE_URL
-        fromDatabase:
-          name: linkedin-agent-db
-          property: connectionString
       - key: JWT_SECRET
         generateValue: true
       - key: NEXTAUTH_SECRET
         generateValue: true
-      - key: NEXTAUTH_URL
-        fromService:
-          type: web
-          name: linkedin-agent
-          property: hosturl
-
-# ============================================
-# DATABASE - PostgreSQL
-# ============================================
-databases:
-  - name: linkedin-agent-db
-    databaseName: linkedin_agent
-    user: linkedin_agent
-    plan: free
-    region: frankfurt
